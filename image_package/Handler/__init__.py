@@ -28,23 +28,20 @@ class ImageHandler():
             raise ValueError("Некорректный ввод чисел для размера")
         
 
-    def image_save_png(self):
+    def image_save_png(self, new_path):
         #Сохранение изображения
         if self.image is None:
             raise ValueError("Сначала загрузите изображение (вызовите image_load())")
         try:
-            agree = input("Вы уверены что хотите сохранить (перезаписать) изображение - (да\нет): ")
+            agree = input("Вы уверены что хотите сохранить изображение - (да\нет): ")
             if agree == "да":
-                self.image.save(self.path, "PNG")
+                self.image.save(new_path, "PNG")
             else:
-                print("Сохранение отенено")
+                print("Сохранение отменено")
         except Exception as e:
             raise TypeError(f"Ошибка: {e}")
         
 
-    def connect_to_processor(self, processor):
-        #Отправка изображения в класс Processor
-        processor.set_image(self.image)
-        return processor
+    
 
 
